@@ -22,6 +22,7 @@ const Form: React.FC = () => {
 
   const [password, setPassWord] = useState("");
   const [validPassword, setValidPassword] = useState(false);
+  const [passwordFocus, setPasswordFocus] = useState(false);
 
   useEffect(() => {
     userRef.current?.focus();
@@ -47,6 +48,11 @@ const Form: React.FC = () => {
     e.preventDefault();
     (!validFirstName || !validLastName || !validEmail || !validPassword) &&
       console.error("invalid entry");
+
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPassWord("");
   };
 
   return (
@@ -103,6 +109,12 @@ const Form: React.FC = () => {
           required
           aria-invalid={validEmail ? "false" : "true"}
         />
+        <p
+          id="email"
+          className={!validEmail && emailFocus ? "there" : "not-there"}
+        >
+          {!validEmail ? "Invalid Email" : "all good"}
+        </p>
         <input
           className={validPassword ? "valid" : "invalid"}
           type="password"
@@ -110,9 +122,17 @@ const Form: React.FC = () => {
           placeholder="Password"
           autoComplete="off"
           onChange={(e) => setPassWord(e.target.value)}
+          onFocus={() => setPasswordFocus(!passwordFocus)}
+          onBlur={() => setPasswordFocus(!passwordFocus)}
           required
           aria-invalid={validPassword ? "false" : "true"}
         />
+        <p
+          id="password"
+          className={!validPassword && passwordFocus ? "there" : "not-there"}
+        >
+          {!validPassword ? "Invalid Password" : "all good"}
+        </p>
         <input type="submit" value="claim your free trial" />
       </form>
       <p>
