@@ -4,7 +4,7 @@ import Form from "./components/Form";
 
 function App() {
   return (
-    <div className="App">
+    <main className="App">
       <section className="core">
         <section className="text-side">
           <h1>Learn to code by watching others</h1>
@@ -31,7 +31,7 @@ function App() {
           . Coded by <a href="#">Abdelghafour122</a>.
         </p>
       </footer>
-    </div>
+    </main>
   );
 }
 
