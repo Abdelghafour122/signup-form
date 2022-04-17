@@ -83,12 +83,14 @@ const Form: React.FC = () => {
         <p
           id="first-name"
           className={
-            !validFirstName && firstName && firstNameFocus
+            firstNameFocus && (!validFirstName || !firstName)
               ? "there"
               : "not-there"
           }
         >
-          {!validFirstName ? "Invalid First name" : "all good"}
+          {!firstName
+            ? "First name cannot be empty"
+            : !validFirstName && "Invalid Last name"}
         </p>
         <input
           className={
@@ -112,10 +114,14 @@ const Form: React.FC = () => {
         <p
           id="last-name"
           className={
-            !validLastName && lastName && lastNameFocus ? "there" : "not-there"
+            lastNameFocus && (!validLastName || !lastName)
+              ? "there"
+              : "not-there"
           }
         >
-          {!validLastName ? "Invalid Last name" : "all good"}
+          {!lastName
+            ? "Last name cannot be empty"
+            : !validLastName && "Invalid Last name"}
         </p>
         <input
           className={
@@ -135,7 +141,7 @@ const Form: React.FC = () => {
           id="email"
           className={!validEmail && email && emailFocus ? "there" : "not-there"}
         >
-          {!validEmail ? "Invalid Email" : "all good"}
+          {!validEmail && "Looks like this is not an email"}
         </p>
         <input
           className={
