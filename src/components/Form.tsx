@@ -6,7 +6,6 @@ const EMAIL_REGEX = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 const Form: React.FC = () => {
   const userRef = useRef<HTMLInputElement>(null);
-  const errorRef = useRef<HTMLInputElement>(null);
 
   const [firstName, setFirstName] = useState("");
   const [validFirstName, setValidFirstName] = useState(false);
@@ -74,7 +73,11 @@ const Form: React.FC = () => {
         />
         <p
           id="first-name"
-          className={!validFirstName && firstNameFocus ? "there" : "not-there"}
+          className={
+            !validFirstName && firstName && firstNameFocus
+              ? "there"
+              : "not-there"
+          }
         >
           {!validFirstName ? "Invalid First name" : "all good"}
         </p>
@@ -93,7 +96,9 @@ const Form: React.FC = () => {
         />
         <p
           id="last-name"
-          className={!validLastName && lastNameFocus ? "there" : "not-there"}
+          className={
+            !validLastName && lastName && lastNameFocus ? "there" : "not-there"
+          }
         >
           {!validLastName ? "Invalid Last name" : "all good"}
         </p>
@@ -111,7 +116,7 @@ const Form: React.FC = () => {
         />
         <p
           id="email"
-          className={!validEmail && emailFocus ? "there" : "not-there"}
+          className={!validEmail && email && emailFocus ? "there" : "not-there"}
         >
           {!validEmail ? "Invalid Email" : "all good"}
         </p>
@@ -129,11 +134,21 @@ const Form: React.FC = () => {
         />
         <p
           id="password"
-          className={!validPassword && passwordFocus ? "there" : "not-there"}
+          className={
+            !validPassword && password && passwordFocus ? "there" : "not-there"
+          }
         >
           {!validPassword ? "Invalid Password" : "all good"}
         </p>
-        <input type="submit" value="claim your free trial" />
+        <input
+          type="submit"
+          value="claim your free trial"
+          disabled={
+            !validFirstName || !validLastName || !validEmail || !validPassword
+              ? true
+              : false
+          }
+        />
       </form>
       <p>
         By clicking the button, you are agreeing to our{" "}
