@@ -130,8 +130,18 @@ body {
 }
 
 input:not(input[type="submit"]) ~ p {
+  /* margin: 0; */
+  /* color: red; */
+
+  position: relative;
+  right: 0;
+  bottom: 13px;
+  font-style: italic;
+  font-size: 11px;
+  color: var(--red);
+  text-align: right;
+  font-weight: 500;
   margin: 0;
-  color: red;
 }
 
 .core .form-side .form-container input[type="submit"] {
@@ -195,10 +205,13 @@ footer a {
 }
 
 .invalid {
-  outline-color: var(--red);
+  outline: 2px solid var(--red);
 }
 
 .valid {
-  outline-color: var(--green);
-  border-color: var(--green);
+  outline: 2px solid var(--green);
+}
+
+.normal {
+  outline: none;
 }

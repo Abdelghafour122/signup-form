@@ -58,7 +58,13 @@ const Form: React.FC = () => {
     <section className="form-container">
       <form onSubmit={handleSubmit}>
         <input
-          className={validFirstName ? "valid" : "invalid"}
+          className={
+            firstNameFocus
+              ? validFirstName && firstName
+                ? "valid"
+                : "invalid"
+              : "normal"
+          }
           ref={userRef}
           type="text"
           value={firstName}
@@ -82,7 +88,13 @@ const Form: React.FC = () => {
           {!validFirstName ? "Invalid First name" : "all good"}
         </p>
         <input
-          className={validLastName ? "valid" : "invalid"}
+          className={
+            lastNameFocus
+              ? validLastName && lastName
+                ? "valid"
+                : "invalid"
+              : "normal"
+          }
           type="text"
           value={lastName}
           placeholder="Last Name"
@@ -103,7 +115,9 @@ const Form: React.FC = () => {
           {!validLastName ? "Invalid Last name" : "all good"}
         </p>
         <input
-          className={validEmail ? "valid" : "invalid"}
+          className={
+            emailFocus ? (validEmail && email ? "valid" : "invalid") : "normal"
+          }
           type="email"
           value={email}
           placeholder="Email Address"
@@ -121,7 +135,14 @@ const Form: React.FC = () => {
           {!validEmail ? "Invalid Email" : "all good"}
         </p>
         <input
-          className={validPassword ? "valid" : "invalid"}
+          // className={validPassword ? "valid" : "invalid"}
+          className={
+            passwordFocus
+              ? validPassword && password
+                ? "valid"
+                : "invalid"
+              : "normal"
+          }
           type="password"
           value={password}
           placeholder="Password"
@@ -144,9 +165,9 @@ const Form: React.FC = () => {
           type="submit"
           value="claim your free trial"
           disabled={
-            !validFirstName || !validLastName || !validEmail || !validPassword
-              ? true
-              : false
+            validFirstName && validLastName && validEmail && validPassword
+              ? false
+              : true
           }
         />
       </form>
