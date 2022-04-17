@@ -135,7 +135,6 @@ const Form: React.FC = () => {
           {!validEmail ? "Invalid Email" : "all good"}
         </p>
         <input
-          // className={validPassword ? "valid" : "invalid"}
           className={
             passwordFocus
               ? validPassword && password
