@@ -59,7 +59,7 @@ body {
   .core {
     flex-direction: column;
     width: 25rem;
-    gap: 2.5rem;
+    justify-content: space-evenly;
   }
 }
 
