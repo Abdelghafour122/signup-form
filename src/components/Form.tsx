@@ -45,13 +45,16 @@ const Form: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    (!validFirstName || !validLastName || !validEmail || !validPassword) &&
+    // JUST INCASE THE BUTTON WAS HACKED
+    if (!validFirstName || !validLastName || !validEmail || !validPassword)
       console.error("invalid entry");
-
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassWord("");
+    else {
+      console.log({ firstName, lastName, email, password });
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassWord("");
+    }
   };
 
   return (
